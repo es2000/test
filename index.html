@@ -46,8 +46,12 @@
 
     </div>
     <br><br><br><br><br>
-    <span id="demo"/>
-<span id="mapholder"/>
+  <input id="zoomSlide" type="range"
+ min="1" max="20" step="1" value="14"
+ onchange="getLocation()" />
+	<br>
+	<div id="demo"/>
+	<div id="mapholder"/>
 	
 	<script>
 var x=document.getElementById("demo");
@@ -66,7 +70,7 @@ function getLocation()
 {
 var latlon=position.coords.latitude+","+position.coords.longitude;
 var img_url="http://maps.googleapis.com/maps/api/staticmap?center="
-+latlon+"&zoom=15&size=600x500&sensor=false";
++latlon+"&zoom="+document.getElementById("zoomSlide").value+"&size=600x500&sensor=false&visual_refresh=false&maptype=roadmap";
 
 document.getElementById("mapholder").innerHTML="<img src='"+img_url+"'>";
 }
